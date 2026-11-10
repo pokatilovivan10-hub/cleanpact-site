@@ -1,0 +1,15 @@
+.price-cards{grid-template-columns:repeat(3,1fr)}
+.equipment-questions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.equipment-question{margin:0;border:1px solid #e0e8df;border-radius:5px;padding:15px;display:flex;flex-wrap:wrap;gap:10px 16px}
+.equipment-question legend{font-size:12px;font-weight:800;padding:0 4px}
+.equipment-question label{font-size:11px;color:#526b59;display:flex;align-items:center;gap:5px}
+.equipment-question input{accent-color:#255a44}
+.reviews{background:#fff}
+.reviews-placeholder{border:1px dashed #bfd1c0;background:#f7faf6;padding:30px;text-align:center;color:#728176;font-size:13px}
+.consent{display:flex!important;align-items:flex-start;gap:9px;line-height:1.55;color:#617166}
+.consent input{width:auto!important;margin:3px 0 0}
+.consent a,.footer-bottom a{text-decoration:underline}
+.footer-bottom a{color:#b6d4bd}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 24px}.contact-links a{font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+@media(max-width:780px){.price-cards{grid-template-columns:repeat(2,1fr)}.equipment-questions{grid-template-columns:1fr}}
+@media(max-width:480px){.price-cards{grid-template-columns:1fr}}
