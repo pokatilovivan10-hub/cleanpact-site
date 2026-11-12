@@ -115,5 +115,20 @@ function showGallery(){
 document.querySelectorAll('[data-gallery]').forEach(button=>button.onclick=()=>{activeGallery=button.dataset.gallery;document.querySelectorAll('[data-gallery]').forEach(item=>item.classList.toggle('active',item===button));showGallery()});
 $('menuBtn').onclick=()=>{const open=$('nav').classList.toggle('open');$('menuBtn').setAttribute('aria-expanded',String(open))};
 $('nav').querySelectorAll('a').forEach(link=>link.onclick=()=>$('nav').classList.remove('open'));
+function enhanceLanding(){
+  const prices=document.querySelector('#prices');
+  if(prices&&!document.querySelector('.consult-strip'))prices.insertAdjacentHTML('afterend','<section class="consult-strip"><div class="container consult-inner"><div><div class="eyebrow">НУЖНА ПОДСКАЗКА?</div><h2>Не знаете, какой <em>формат уборки</em> выбрать?</h2><p>Начните с расчёта: выберите помещение и услугу — дальше легко уточнить детали.</p></div><a href="#calculator" class="btn">Рассчитать уборку <span>↗</span></a></div></section>');
+  const extras=$('extrasBlock');
+  const extrasList=$('extrasList');
+  const extrasNote=extras?.querySelector('.calc-muted');
+  if(extras&&extrasList&&extrasNote&&!extras.querySelector('.extras-details')){
+    const details=document.createElement('details');
+    details.className='extras-details';
+    details.innerHTML='<summary>Добавить дополнительные работы</summary>';
+    details.append(extrasNote,extrasList);
+    extras.append(details);
+  }
+}
+enhanceLanding();
 render();
 showGallery();

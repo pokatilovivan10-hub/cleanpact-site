@@ -12,10 +12,12 @@
 .review-card p{margin:20px 0 25px;font-size:12px;line-height:1.85;color:#52665a;flex:1}
 .review-card footer{display:flex;align-items:center;gap:8px;border-top:1px solid #e3ebe2;padding-top:15px}
 .review-card strong{font-size:12px;color:#214b36}.review-card span{font-size:10px;color:#829186}.review-card span::before{content:'·';margin-right:8px}
+.consult-strip{background:#dfeeed;padding:70px 0}.consult-inner{display:flex;align-items:center;justify-content:space-between;gap:48px}.consult-inner .eyebrow{margin-bottom:16px}.consult-inner h2{max-width:620px;font-size:clamp(30px,3.6vw,45px);line-height:1.12;letter-spacing:-2px;margin:0}.consult-inner h2 em{color:#6f9b79;font-style:normal}.consult-inner p{max-width:570px;margin:18px 0 0;color:#617368;font-size:13px;line-height:1.8}.consult-inner .btn{flex:none}
+.extras-details{border:1px solid #dfe9de;border-radius:5px;background:#fbfdfb;padding:0 17px}.extras-details summary{padding:16px 0;cursor:pointer;font-size:12px;font-weight:800;color:#315e44;list-style:none;display:flex;align-items:center;justify-content:space-between}.extras-details summary::after{content:'+';font-size:21px;font-weight:400}.extras-details[open] summary{border-bottom:1px solid #e6eee5}.extras-details[open] summary::after{content:'−'}.extras-details .calc-muted{margin:16px 0 8px}.extras-details .extra-row:last-child{padding-bottom:15px}
 .consent{display:flex!important;align-items:flex-start;gap:9px;line-height:1.55;color:#617166}
 .consent input{width:auto!important;margin:3px 0 0}
 .consent a,.footer-bottom a{text-decoration:underline}
 .footer-bottom a{color:#b6d4bd}
 .contact-links{display:flex;flex-wrap:wrap;gap:10px 18px;margin:0 0 24px}.contact-links a{font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
-@media(max-width:780px){.price-cards,.reviews-grid{grid-template-columns:repeat(2,1fr)}.equipment-questions{grid-template-columns:1fr}}
+@media(max-width:780px){.price-cards,.reviews-grid{grid-template-columns:repeat(2,1fr)}.equipment-questions{grid-template-columns:1fr}.consult-inner{align-items:flex-start;flex-direction:column;gap:26px}}
 @media(max-width:480px){.price-cards,.reviews-grid{grid-template-columns:1fr}.review-card{min-height:0;padding:24px 20px}}
