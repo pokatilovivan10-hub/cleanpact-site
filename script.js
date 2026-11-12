@@ -118,6 +118,7 @@ $('nav').querySelectorAll('a').forEach(link=>link.onclick=()=>$('nav').classList
 function enhanceLanding(){
   const prices=document.querySelector('#prices');
   if(prices&&!document.querySelector('.consult-strip'))prices.insertAdjacentHTML('afterend','<section class="consult-strip"><div class="container consult-inner"><div><div class="eyebrow">НУЖНА ПОДСКАЗКА?</div><h2>Не знаете, какой <em>формат уборки</em> выбрать?</h2><p>Начните с расчёта: выберите помещение и услугу — дальше легко уточнить детали.</p></div><a href="#calculator" class="btn">Рассчитать уборку <span>↗</span></a></div></section>');
+  if(!document.querySelector('.quiz-fab'))document.body.insertAdjacentHTML('beforeend','<button class="quiz-fab" type="button" aria-label="Открыть расчёт стоимости"><span>Рассчитать<br>уборку</span><b>↗</b></button>');
   const extras=$('extrasBlock');
   const extrasList=$('extrasList');
   const extrasNote=extras?.querySelector('.calc-muted');
@@ -148,7 +149,7 @@ function openQuiz(){
   document.body.style.overflow='hidden';
 }
 document.addEventListener('click',event=>{
-  const trigger=event.target.closest('.head-cta,.hero-actions .btn,.consult-strip .btn');
+  const trigger=event.target.closest('.head-cta,.hero-actions .btn,.consult-strip .btn,.quiz-fab');
   if(!trigger)return;
   event.preventDefault();
   openQuiz();
