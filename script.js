@@ -134,6 +134,45 @@ enhanceLanding();
 render();
 showGallery();
 
+function initReviewsCarousel(){
+  const track=document.querySelector('.reviews-track');
+  const previous=$('reviewsPrev');
+  const next=$('reviewsNext');
+  const counter=$('reviewsCounter');
+  if(!track||!previous||!next||!counter)return;
+  const originals=[...track.children];
+  const total=originals.length;
+  let index=0;
+  const visible=()=>window.matchMedia('(max-width:480px)').matches?1:window.matchMedia('(max-width:780px)').matches?2:3;
+  const clones=()=>[...track.querySelectorAll('[data-review-clone]')];
+  function prepare(){
+    clones().forEach(node=>node.remove());
+    originals.slice(0,visible()).forEach(card=>{const clone=card.cloneNode(true);clone.dataset.reviewClone='true';clone.setAttribute('aria-hidden','true');track.append(clone)});
+    index=0;
+    move(false);
+  }
+  function move(animate=true){
+    const card=track.querySelector('.review-card');
+    const gap=16;
+    const distance=card.getBoundingClientRect().width+gap;
+    track.style.transition=animate?'transform .38s ease':'none';
+    track.style.transform=`translateX(${-index*distance}px)`;
+    counter.textContent=`${(index%total)+1} / ${total}`;
+  }
+  function go(direction){
+    index+=direction;
+    if(index<0){index=total-1;move(false);requestAnimationFrame(()=>move(true));return}
+    move(true);
+  }
+  next.addEventListener('click',()=>go(1));
+  previous.addEventListener('click',()=>go(-1));
+  track.addEventListener('transitionend',()=>{if(index>=total){index=0;move(false)}});
+  let resizeTimer;
+  window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(prepare,120)});
+  prepare();
+}
+initReviewsCarousel();
+
 const quizUrl='https://clean-pact.ru/';
 function openQuiz(){
   let quizModal=$('quizModal');
