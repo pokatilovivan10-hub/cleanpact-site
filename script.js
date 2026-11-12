@@ -132,3 +132,30 @@ function enhanceLanding(){
 enhanceLanding();
 render();
 showGallery();
+
+const quizUrl='https://clean-pact.ru/';
+function openQuiz(){
+  let quizModal=$('quizModal');
+  if(!quizModal){
+    quizModal=document.createElement('div');
+    quizModal.className='quiz-modal';
+    quizModal.id='quizModal';
+    quizModal.innerHTML='<div class="quiz-modal__backdrop" data-quiz-close="true"></div><section class="quiz-modal__dialog" role="dialog" aria-modal="true" aria-label="Расчёт стоимости уборки"><button class="quiz-modal__close" type="button" aria-label="Закрыть квиз">×</button><iframe title="Расчёт стоимости уборки Clean Pact" src="'+quizUrl+'"></iframe></section>';
+    document.body.append(quizModal);
+    quizModal.querySelectorAll('[data-quiz-close="true"],.quiz-modal__close').forEach(control=>control.onclick=()=>{quizModal.classList.remove('open');document.body.style.overflow=''});
+  }
+  quizModal.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+document.addEventListener('click',event=>{
+  const trigger=event.target.closest('.head-cta,.hero-actions .btn,.consult-strip .btn');
+  if(!trigger)return;
+  event.preventDefault();
+  openQuiz();
+});
+document.addEventListener('keydown',event=>{
+  if(event.key==='Escape'){
+    const quizModal=$('quizModal');
+    if(quizModal?.classList.contains('open')){quizModal.classList.remove('open');document.body.style.overflow=''}
+  }
+});
