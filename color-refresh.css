@@ -1,0 +1,57 @@
+:root {
+  --green: #087e8b;
+  --deep: #07545f;
+  --mint: #ffd166;
+  --cream: #f2fbfc;
+  --text: #18343b;
+  --muted: #627b80;
+  --line: #d7eaed;
+}
+
+.topbar { background: #07545f; color: #e8fbfc; }
+.dot { background: #ffd166; }
+.brand-accent, .logo-mark, .eyebrow, .hero h1 em, h2 em,
+.consult-inner h2 em, .step > span, .price-tag, .service-icon,
+.sparkle, .vertical-caption { color: #0b9bab; }
+.eyebrow-line { background: #ffd166; }
+.header nav a:hover, .text-link:hover { color: #0b9bab; }
+
+.btn { background: #ffb547; border-color: #ffb547; color: #16353b; }
+.btn:hover { background: #ffcb6d; }
+.hero { background: #f2fbfc; }
+.hero-visual { background: #b9e7eb; }
+.hero-visual::before { border-color: #8cd3d9; }
+.hero-visual img { filter: saturate(.98) brightness(1.03); }
+.hero-facts { border-color: #cfe7e9; }
+.hero-facts strong { color: #07545f; }
+
+.service-card { background: #f1fafb; border-color: #dbeff1; }
+.service-feature, .summary-sticky, .cta-section { background: #087e8b; }
+.service-feature .service-n, .summary-overline, .cta-section .eyebrow { color: #d7f5f7; }
+.round-arrow:hover { background: #ffd166; color: #07545f; }
+.how, .faq, .reviews { background: #f2fbfc; }
+.price-card.highlighted { background: #fff9eb; border-color: #ffbd4a; }
+.price-value { color: #087e8b; }
+
+.calculator-section { background: #e0f4f6; }
+.calc-number { background: #d6f1f3; color: #087e8b; }
+.chip.active, .portfolio-tab.active { background: #087e8b; border-color: #087e8b; }
+.choice.active { background: #effbfc; border-color: #0b9bab; box-shadow: inset 0 0 0 1px #0b9bab; }
+.choice b, .area-input button, .area-input input, input[type=range] { color: #087e8b; accent-color: #0b9bab; }
+.calc-note { background: #eefafb; color: #316f78; }
+.summary-sticky .btn { background: #ffd166; border-color: #ffd166; color: #16353b; }
+.summary-sticky .btn:hover { background: #fff5d8; }
+.summary-breakdown { border-color: #54aeb7; }
+.btn-outline:hover { background: #0b9bab; }
+
+.consult-strip { background: #dff5f6; }
+.quiz-fab { background: #ffb547; color: #16353b; box-shadow: 0 15px 35px #07545f40; }
+.quiz-fab:hover { background: #ffcb6d; }
+.quiz-modal__close { background: #07545f; }
+.review-card::before { color: #ffb547; }
+.reviews-arrow { color: #087e8b; border-color: #bfe2e6; }
+.reviews-arrow:hover { background: #087e8b; }
+.footer { background: #064851; }
+.footer .brand-accent { color: #ffd166; }
+.footer-bottom { border-color: #2b727a; }
+.footer-bottom a { color: #d8f5f6; }
