@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2026-11-13"
 
 [vars]
-ALLOWED_ORIGIN = "https://pokatilovivan10-hub.github.io"
+ALLOWED_ORIGIN = "https://clean-pact.pro"
 
 # Configure in Cloudflare Dashboard as Secrets, never commit values:
 # TELEGRAM_BOT_TOKEN
