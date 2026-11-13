@@ -103,7 +103,42 @@ $('requestBtn').onclick=()=>setModal(true);
 $('closeModal').onclick=()=>setModal(false);
 document.querySelector('[data-close]').onclick=()=>setModal(false);
 document.addEventListener('keydown',event=>{if(event.key==='Escape')setModal(false)});
-$('leadForm').addEventListener('submit',event=>{event.preventDefault();$('leadStatus').textContent='Форма готова к приёму заявок; подключение канала отправки выполняется после получения контакта или CRM.'});
+const leadConfigUrl=new URL('assets/form-config.json',document.currentScript.src).href;
+let leadEndpointPromise;
+function getLeadEndpoint(){
+  if(!leadEndpointPromise){
+    leadEndpointPromise=fetch(leadConfigUrl,{cache:'no-store'})
+      .then(response=>{if(!response.ok)throw new Error('config');return response.json()})
+      .then(config=>{if(!config||typeof config.endpoint!=='string'||!config.endpoint.startsWith('https://'))throw new Error('endpoint');return config.endpoint});
+    leadEndpointPromise.catch(()=>{leadEndpointPromise=undefined});
+  }
+  return leadEndpointPromise;
+}
+$('leadForm').addEventListener('submit',async event=>{
+  event.preventDefault();
+  const form=$('leadForm');
+  const status=$('leadStatus');
+  const button=form.querySelector('button[type="submit"]');
+  status.textContent='';
+  if(!form.reportValidity())return;
+  if(form.querySelector('input[name="bot-field"]').value)return;
+  const initialButtonMarkup=button.innerHTML;
+  button.disabled=true;
+  button.textContent='Отправляем…';
+  try{
+    const endpoint=await getLeadEndpoint();
+    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()});
+    const result=await response.json().catch(()=>null);
+    if(!response.ok||!result||result.ok!==true)throw new Error('delivery');
+    status.textContent='Заявка отправлена. Мы перезвоним вам в ближайшее время.';
+    form.reset();
+  }catch(_){
+    status.textContent='Не удалось отправить заявку. Позвоните нам или попробуйте ещё раз.';
+  }finally{
+    button.disabled=false;
+    button.innerHTML=initialButtonMarkup;
+  }
+});
 const gallery=$('gallery');
 let activeGallery='compare';
 function showGallery(){
