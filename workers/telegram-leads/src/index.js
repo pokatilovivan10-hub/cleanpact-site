@@ -77,7 +77,13 @@ export default {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({
         chat_id: env.TELEGRAM_CHAT_ID,
-        text: `Новая заявка CleanPact\\n\\nИмя: ${name}\\nТелефон: ${phone}\\nИсточник: ${origin}`,
+        text: [
+          'Новая заявка CleanPact',
+          '',
+          `Имя: ${name}`,
+          `Телефон: ${phone}`,
+          `Источник: ${origin}`,
+        ].join(String.fromCharCode(10)),
         disable_web_page_preview: true,
       }),
     });
